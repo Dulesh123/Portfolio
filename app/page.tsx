@@ -7,6 +7,7 @@ import Insta from "./icons/insta";
 import X from "./icons/x";
 import Pen from "./icons/pen";
 import Solana from "./icons/solana";
+import portfolioImg from "./portfolio.jpg";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -80,7 +81,7 @@ export default function Home() {
               {/* Image */}
               <div className="flex justify-center md:justify-start">
                 <Image
-                  src="https://media.istockphoto.com/id/1598719537/vector/teenage-samurai-girl-anime.jpg?s=612x612&w=0&k=20&c=yK7lT21o3E9ZayNdHaAPzjEsSWqcq4hIZklsGDMStuQ="
+                  src={portfolioImg}
                   alt="my image"
                   width={300}
                   height={300}
