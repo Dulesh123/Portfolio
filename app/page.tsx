@@ -1,7 +1,6 @@
-
-
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import Brain from "./icons/brain";
 import Github from "./icons/github";
 import Insta from "./icons/insta";
@@ -80,9 +79,11 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-0">
               {/* Image */}
               <div className="flex justify-center md:justify-start">
-                <img
+                <Image
                   src="https://media.istockphoto.com/id/1598719537/vector/teenage-samurai-girl-anime.jpg?s=612x612&w=0&k=20&c=yK7lT21o3E9ZayNdHaAPzjEsSWqcq4hIZklsGDMStuQ="
                   alt="my image"
+                  width={300}
+                  height={300}
                   className="rounded-3xl w-48 sm:w-64 md:w-auto h-auto"
                 />
               </div>
@@ -113,13 +114,13 @@ export default function Home() {
             {/* Intro Text */}
             <div className="text-center md:text-left px-2 sm:px-0">
               <div className="text-3xl sm:text-4xl md:text-5xl text-white font-bold">
-                Hi, I'm Dulesh
+                Hi, I&apos;m Dulesh
               </div>
               <div className="text-xl sm:text-2xl text-gray-400 mt-3 sm:mt-5">
                 21, Belagavi | Full Stack Engineer
               </div>
               <div className="text-base sm:text-lg md:text-xl text-gray-400 mt-3 sm:mt-4 leading-relaxed">
-                I'm a Full Stack Engineer building robust, scalable, and
+                I&apos;m a Full Stack Engineer building robust, scalable, and
                 user-centric web applications. From designing efficient backend
                 architectures to crafting seamless front-end experiences, I turn
                 complex technical challenges into intuitive digital solutions.
@@ -132,9 +133,9 @@ export default function Home() {
                 Projects
               </div>
               <div className="text-gray-400 text-base sm:text-lg md:text-xl">
-                Here's a collection of my projects, highlighting my expertise in
-                full-stack and blockchain development through real-world,
-                problem-solving applications.
+                Here&apos;s a collection of my projects, highlighting my
+                expertise in full-stack and blockchain development through
+                real-world, problem-solving applications.
               </div>
             </div>
           </div>
