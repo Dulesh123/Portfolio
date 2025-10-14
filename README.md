@@ -8,7 +8,7 @@ This portfolio showcases my projects, technical skills, and professional backgro
 
 ## 🚀 Tech Stack
 
-- **Frontend:** Next.js, React, Tailwind CSS  
+- **Frontend:** Next.js, Tailwind CSS  
 - **Deployment:** Vercel  
 - **Version Control:** Git & GitHub  
 
