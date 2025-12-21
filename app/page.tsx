@@ -371,7 +371,7 @@ export default function Home() {
                       real-time
                     </div>
                     <div className="text-gray-200 bg-black rounded-lg px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base border border-gray-700 hover:border-blue-500 transition-colors">
-                      responsive U
+                      responsive UI
                     </div>
                     <div className="text-gray-200 bg-black rounded-lg px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base border border-gray-700 hover:border-blue-500 transition-colors">
                       productivity-focused design
