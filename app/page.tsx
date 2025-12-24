@@ -7,12 +7,17 @@ import Insta from "./icons/insta";
 import X from "./icons/x";
 import Pen from "./icons/pen";
 import Solana from "./icons/solana";
+import Eye from "./icons/eye";
 import portfolioImg from "./portfolio.jpg";
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const [showPopup1, setShowPopup1] = useState(false);
   const [showPopup2, setShowPopup2] = useState(false);
+  const [showPopup3, setShowPopup3] = useState(false);
+  const [showBlogPopup, setShowBlogPopup] = useState(false);
+  const [showBlogPopup1, setShowBlogPopup1] = useState(false);
+  const [showBlogPopup2, setShowBlogPopup2] = useState(false);
 
   return (
     <>
@@ -50,23 +55,42 @@ export default function Home() {
 
       `}</style>
       <div className="min-h-screen scroll-smooth">
-        {/* Fixed grid background with subtle blue glow */}
+        {/* Fixed grid background with enhanced visual effects */}
         <div
           className="fixed inset-0 -z-10 pointer-events-none animate-[fadeIn_1s_ease-in]"
           style={{
-            backgroundColor: "black",
+            backgroundColor: "#000000",
             backgroundImage: `
-            radial-gradient(circle at center, rgba(0,150,255,0.12) 0%, transparent 65%),
-            radial-gradient(circle at top left, rgba(0,255,255,0.08) 0%, transparent 60%),
-            radial-gradient(circle at bottom right, rgba(255,0,255,0.08) 0%, transparent 70%),
-            radial-gradient(circle at bottom left, rgba(0,150,255,0.06) 0%, transparent 75%),
-            linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)
+            radial-gradient(circle at 20% 30%, rgba(0,150,255,0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255,0,255,0.12) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(0,255,255,0.08) 0%, transparent 60%),
+            radial-gradient(circle at 10% 80%, rgba(0,150,255,0.06) 0%, transparent 55%),
+            radial-gradient(circle at 90% 20%, rgba(147,51,234,0.08) 0%, transparent 50%),
+            linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px),
+            radial-gradient(circle at 0px 0px, rgba(59,130,246,0.15) 1px, transparent 1px),
+            radial-gradient(circle at 0px 0px, rgba(147,51,234,0.1) 1.5px, transparent 1.5px)
           `,
             backgroundSize:
-              "100% 100%, 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px",
+              "100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50px 50px, 50px 50px, 200px 200px, 300px 300px",
             backgroundRepeat:
-              "no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat",
+              "no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, repeat, repeat",
+            backgroundBlendMode: "screen, screen, screen, screen, screen, normal, normal, screen, screen",
+            backgroundPosition: "0% 0%, 100% 100%, 50% 50%, 0% 100%, 100% 0%, 0 0, 0 0, 0 0, 0 0",
+          }}
+        ></div>
+        
+        {/* Additional overlay layer for depth */}
+        <div
+          className="fixed inset-0 -z-10 pointer-events-none opacity-40"
+          style={{
+            backgroundImage: `
+            linear-gradient(135deg, rgba(0,150,255,0.03) 0%, transparent 50%),
+            linear-gradient(225deg, rgba(255,0,255,0.03) 0%, transparent 50%),
+            linear-gradient(45deg, rgba(0,255,255,0.02) 0%, transparent 50%)
+          `,
+            backgroundSize: "100% 100%, 100% 100%, 100% 100%",
+            backgroundRepeat: "no-repeat, no-repeat, no-repeat",
             backgroundBlendMode: "screen",
           }}
         ></div>
@@ -160,9 +184,9 @@ export default function Home() {
                 <div className="flex w-full min-h-[220px] md:min-h-[240px] lg:min-h-[260px]">
                   {/* Accent Bar */}
                   <div className="relative w-[4px] md:w-[5px] lg:w-[6px] h-full rounded-l-xl overflow-hidden flex-shrink-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#004d33] via-[#00b670] to-[#bf0096] blur-sm opacity-100"></div>
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.45)_0%,_transparent_70%)] opacity-80"></div>
-                    <div className="absolute top-1/2 left-0 w-full h-[85%] bg-cyan-400 opacity-70 blur-md animate-pulse transform -translate-y-1/2"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a8a] via-[#3b82f6] to-[#60a5fa] blur-sm opacity-100"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.45)_0%,_transparent_70%)] opacity-80"></div>
+                    <div className="absolute top-1/2 left-0 w-full h-[85%] bg-blue-400 opacity-70 blur-md animate-pulse transform -translate-y-1/2"></div>
                   </div>
 
                   {/* Content Area */}
@@ -276,9 +300,9 @@ export default function Home() {
                 <div className="flex w-full min-h-[220px] md:min-h-[240px] lg:min-h-[260px]">
                   {/* Accent Bar */}
                   <div className="relative w-[4px] md:w-[5px] lg:w-[6px] h-full rounded-l-xl overflow-hidden flex-shrink-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#004d33] via-[#00b670] to-[#bf0096] blur-sm opacity-100"></div>
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.45)_0%,_transparent_70%)] opacity-80"></div>
-                    <div className="absolute top-1/2 left-0 w-full h-[85%] bg-cyan-400 opacity-70 blur-md animate-pulse transform -translate-y-1/2"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#14532d] via-[#22c55e] to-[#4ade80] blur-sm opacity-100"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(34,197,94,0.45)_0%,_transparent_70%)] opacity-80"></div>
+                    <div className="absolute top-1/2 left-0 w-full h-[85%] bg-green-400 opacity-70 blur-md animate-pulse transform -translate-y-1/2"></div>
                   </div>
 
                   {/* Content Area */}
@@ -390,9 +414,9 @@ export default function Home() {
                 <div className="flex w-full min-h-[220px] md:min-h-[240px] lg:min-h-[260px]">
                   {/* Accent Bar */}
                   <div className="relative w-[4px] md:w-[5px] lg:w-[6px] h-full rounded-l-xl overflow-hidden flex-shrink-0">
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#004d33] via-[#00b670] to-[#bf0096] blur-sm opacity-100"></div>
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.45)_0%,_transparent_70%)] opacity-80"></div>
-                    <div className="absolute top-1/2 left-0 w-full h-[85%] bg-cyan-400 opacity-70 blur-md animate-pulse transform -translate-y-1/2"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#581c87] via-[#9333ea] to-[#a855f7] blur-sm opacity-100"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(147,51,234,0.45)_0%,_transparent_70%)] opacity-80"></div>
+                    <div className="absolute top-1/2 left-0 w-full h-[85%] bg-purple-400 opacity-70 blur-md animate-pulse transform -translate-y-1/2"></div>
                   </div>
 
                   {/* Content Area */}
@@ -494,6 +518,286 @@ export default function Home() {
                 </div>
               </div>
             )}
+
+
+
+
+
+
+            {/* Project 4 - Diabetic Retinopathy */}
+            {!showPopup3 ? (
+              <div
+                onClick={() => setShowPopup3(!showPopup3)}
+                className="bg-gray-900 w-full rounded-xl overflow-hidden hover:bg-gray-800 cursor-pointer transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] shadow-lg hover:shadow-2xl border border-gray-800 hover:border-gray-700"
+              >
+                <div className="flex w-full min-h-[220px] md:min-h-[240px] lg:min-h-[260px]">
+                  {/* Accent Bar */}
+                  <div className="relative w-[4px] md:w-[5px] lg:w-[6px] h-full rounded-l-xl overflow-hidden flex-shrink-0">
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#7f1d1d] via-[#ef4444] to-[#f87171] blur-sm opacity-100"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(239,68,68,0.45)_0%,_transparent_70%)] opacity-80"></div>
+                    <div className="absolute top-1/2 left-0 w-full h-[85%] bg-red-400 opacity-70 blur-md animate-pulse transform -translate-y-1/2"></div>
+                  </div>
+
+                  {/* Content Area */}
+                  <div className="flex-1 h-full p-5 md:p-6 lg:p-8 flex flex-col gap-4 md:gap-5 lg:gap-6">
+                    {/* Header Section */}
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4">
+                      <div className="flex items-center gap-2.5 md:gap-3 lg:gap-4 text-red-500 flex-1 min-w-0">
+                        <div className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 flex-shrink-0">
+                          <Eye />
+                        </div>
+                        <span className="text-white text-lg md:text-xl lg:text-2xl font-bold truncate">
+                          Diabetic-Retinopathy
+                        </span>
+                      </div>
+                      <div className="text-white text-xs md:text-sm lg:text-base font-semibold bg-gray-800 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-lg whitespace-nowrap border border-gray-700">
+                        IOT and ML Engineer
+                      </div>
+                    </div>
+
+                    {/* Description Section */}
+                    <div className="flex items-start justify-between gap-3 md:gap-4">
+                      <div className="text-gray-300 text-sm md:text-base lg:text-lg flex-1 leading-relaxed">
+                        A Diabetic Stage Detection Application
+                      </div>
+                      <a
+                        href="https://github.com/Dulesh123/Diabetic-Retinopathy.git"
+                        className="text-white hover:text-red-400 transition-all flex-shrink-0 hover:scale-110 transform duration-200 p-1 rounded-lg hover:bg-gray-800"
+                        onClick={(e) => e.stopPropagation()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View Diabetic-Retinopathy on GitHub"
+                      >
+                        <div className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8">
+                          <Github />
+                        </div>
+                      </a>
+                    </div>
+
+                    {/* Technology Tags */}
+                    <div className="flex flex-wrap items-center gap-2 md:gap-2.5 lg:gap-3 mt-auto">
+                      <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-lg bg-black hover:bg-gray-700 text-xs md:text-sm lg:text-base hover:text-white transition-all cursor-default border border-gray-700 hover:border-red-500">
+                        IOT
+                      </span>
+                      <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-lg bg-black hover:bg-gray-700 text-xs md:text-sm lg:text-base hover:text-white transition-all cursor-default border border-gray-700 hover:border-red-500">
+                        ML
+                      </span>
+                      <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-lg bg-black hover:bg-gray-700 text-xs md:text-sm lg:text-base hover:text-white transition-all cursor-default border border-gray-700 hover:border-red-500">
+                        Raspberry Pi
+                      </span>
+                      <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 lg:px-5 lg:py-2.5 rounded-lg bg-black hover:bg-gray-700 text-xs md:text-sm lg:text-base hover:text-white transition-all cursor-default border border-gray-700 hover:border-red-500">
+                        AI
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md z-50 p-4 md:p-6"
+                onClick={() => setShowPopup3(!showPopup3)}
+              >
+                <div 
+                  className="bg-gray-800 rounded-xl shadow-2xl p-5 md:p-8 lg:p-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-gray-700"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6 text-red-500">
+                    <div className="w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10">
+                      <Eye />
+                    </div>
+                    <div className="text-white text-xl md:text-2xl lg:text-3xl font-bold">
+                      Diabetic-Retinopathy
+                    </div>
+                  </div>
+
+                  <div className="text-gray-200 text-base md:text-lg lg:text-xl mb-5 md:mb-6 leading-relaxed">
+                    A Diabetic Stage Detection Application
+                  </div>
+
+                  <ol className="list-decimal list-inside text-gray-100 text-base md:text-lg lg:text-xl space-y-2 md:space-y-3 pl-3 mb-6 md:mb-8 leading-relaxed">
+                    <li>AI-powered system for early detection of diabetic retinopathy using retinal images.</li>
+                    <li>IOT device integration with Raspberry Pi for automated image capture and analysis.</li>
+                    <li>Machine learning model trained to classify different stages of diabetic retinopathy.</li>
+                  </ol>
+
+                  <div className="text-red-500 text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-5">
+                    Features
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 md:gap-3">
+                    <div className="text-gray-200 bg-black rounded-lg px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base border border-gray-700 hover:border-red-500 transition-colors">
+                      Retinal image analysis
+                    </div>
+                    <div className="text-gray-200 bg-black rounded-lg px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base border border-gray-700 hover:border-red-500 transition-colors">
+                      Stage classification
+                    </div>
+                    <div className="text-gray-200 bg-black rounded-lg px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base border border-gray-700 hover:border-red-500 transition-colors">
+                      IOT device control
+                    </div>
+                    <div className="text-gray-200 bg-black rounded-lg px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base border border-gray-700 hover:border-red-500 transition-colors">
+                      Automated detection
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Blogs Section Header */}
+        <div className="w-full flex justify-center px-4 md:px-6 lg:px-8 pt-12 md:pt-16 lg:pt-24 animate-[slideInDown_0.8s_ease-out]">
+          <div className="w-full max-w-7xl">
+            <div className="text-center px-2 md:px-0">
+              <div className="text-transparent bg-clip-text bg-gradient-to-b from-[#47c4bd] via-[#4ea8a8] to-[#963f6f] font-bold text-2xl md:text-3xl lg:text-4xl animate-pulse drop-shadow-[0_0_15px_rgba(0,182,112,0.8)] drop-shadow-[0_0_30px_rgba(0,182,112,0.5)] drop-shadow-[0_0_45px_rgba(191,0,150,0.3)] mb-3 md:mb-4">
+                Blogs
+              </div>
+              <div className="text-gray-400 text-base md:text-lg lg:text-xl max-w-3xl mx-auto">
+                Exploring the latest trends, best practices, and insights in web development, cloud infrastructure, and containerization.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Blogs Cards Section */}
+        <div className="w-full flex justify-center px-4 md:px-6 lg:px-8 pb-12 md:pb-16 lg:pb-24 animate-[slideInUp_1s_ease-out]">
+          <div className="w-full max-w-7xl space-y-6 md:space-y-8 lg:space-y-10">
+            {/* Blog 1 - Web Development */}
+            <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 w-full rounded-2xl overflow-hidden hover:from-gray-800 hover:via-gray-800 hover:to-gray-700 transition-all duration-300 shadow-xl hover:shadow-2xl border border-gray-700 hover:border-blue-500/50 relative group">
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-500"></div>
+              
+              <div className="p-6 md:p-8 lg:p-10">
+                {/* Header Section */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
+                  <div className="flex items-center gap-3 md:gap-4 text-blue-500">
+                    <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0">
+                      <Pen />
+                    </div>
+                    <span className="text-white text-xl md:text-2xl lg:text-3xl font-bold">
+                      Modern Web Development
+                    </span>
+                  </div>
+                  <div className="text-white text-xs md:text-sm font-semibold bg-blue-500/20 px-4 py-2 rounded-full border border-blue-500/30">
+                    Web Development
+                  </div>
+                </div>
+
+                {/* Content - Short 4-5 lines */}
+                <div className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+                  <p>
+                    Modern web development has evolved significantly with frameworks enabling faster, scalable applications. Component-based architectures, server-side rendering, and type-safe development revolutionize project approaches. React with Next.js provides SSR capabilities and automatic code splitting, while TypeScript adds compile-time safety for better maintainability.
+                  </p>
+                </div>
+
+                {/* Technology Tags */}
+                <div className="flex flex-wrap items-center gap-2 md:gap-3 pt-4 border-t border-gray-700">
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-blue-500">
+                    React
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-blue-500">
+                    Next.js
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-blue-500">
+                    TypeScript
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-blue-500">
+                    Best Practices
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Blog 2 - AWS */}
+            <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 w-full rounded-2xl overflow-hidden hover:from-gray-800 hover:via-gray-800 hover:to-gray-700 transition-all duration-300 shadow-xl hover:shadow-2xl border border-gray-700 hover:border-yellow-500/50 relative group">
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 via-yellow-400 to-orange-500"></div>
+              
+              <div className="p-6 md:p-8 lg:p-10">
+                {/* Header Section */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
+                  <div className="flex items-center gap-3 md:gap-4 text-yellow-500">
+                    <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0">
+                      <Brain />
+                    </div>
+                    <span className="text-white text-xl md:text-2xl lg:text-3xl font-bold">
+                      AWS Cloud Infrastructure
+                    </span>
+                  </div>
+                  <div className="text-white text-xs md:text-sm font-semibold bg-yellow-500/20 px-4 py-2 rounded-full border border-yellow-500/30">
+                    Cloud Computing
+                  </div>
+                </div>
+
+                {/* Content - Short 4-5 lines */}
+                <div className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+                  <p>
+                    AWS has become the backbone of modern cloud infrastructure, offering comprehensive services for scaling, securing, and optimizing applications. Core services like EC2 provide virtual servers with flexible pricing, S3 offers industry-leading object storage, Lambda enables serverless computing, and CloudFormation supports Infrastructure as Code. Best practices include implementing IAM roles for security, auto-scaling for cost optimization, and designing for high availability across multiple availability zones.
+                  </p>
+                </div>
+
+                {/* Technology Tags */}
+                <div className="flex flex-wrap items-center gap-2 md:gap-3 pt-4 border-t border-gray-700">
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-yellow-500">
+                    EC2
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-yellow-500">
+                    S3
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-yellow-500">
+                    Lambda
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-yellow-500">
+                    CloudFormation
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Blog 3 - Docker */}
+            <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 w-full rounded-2xl overflow-hidden hover:from-gray-800 hover:via-gray-800 hover:to-gray-700 transition-all duration-300 shadow-xl hover:shadow-2xl border border-gray-700 hover:border-cyan-500/50 relative group">
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-blue-500"></div>
+              
+              <div className="p-6 md:p-8 lg:p-10">
+                {/* Header Section */}
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 md:mb-8">
+                  <div className="flex items-center gap-3 md:gap-4 text-cyan-500">
+                    <div className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex-shrink-0">
+                      <Brain />
+                    </div>
+                    <span className="text-white text-xl md:text-2xl lg:text-3xl font-bold">
+                      Docker & Containerization
+                    </span>
+                  </div>
+                  <div className="text-white text-xs md:text-sm font-semibold bg-cyan-500/20 px-4 py-2 rounded-full border border-cyan-500/30">
+                    DevOps
+                  </div>
+                </div>
+
+                {/* Content - Short 4-5 lines */}
+                <div className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+                  <p>
+                    Docker has revolutionized software deployment through containerization, a lightweight alternative to virtual machines. Containers package applications with all dependencies, ensuring consistency across development, testing, and production. Key advantages include consistency across environments, application isolation, portability across systems, and resource efficiency by sharing the OS kernel. Docker Compose enables multi-container applications via YAML files, while orchestration tools like Kubernetes manage deployment and scaling in production environments.
+                  </p>
+                </div>
+
+                {/* Technology Tags */}
+                <div className="flex flex-wrap items-center gap-2 md:gap-3 pt-4 border-t border-gray-700">
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-cyan-500">
+                    Docker
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-cyan-500">
+                    Containers
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-cyan-500">
+                    Docker Compose
+                  </span>
+                  <span className="text-gray-300 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-black/50 hover:bg-gray-700 text-xs md:text-sm hover:text-white transition-all cursor-default border border-gray-700 hover:border-cyan-500">
+                    Orchestration
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
