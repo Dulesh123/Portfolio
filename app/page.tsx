@@ -5,7 +5,7 @@ import { Github, Mail, Twitter } from "lucide-react";
 import { Pen, Eye, Code, ExternalLink, Sparkles } from "lucide-react";
 
 export default function Portfolio() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProject, setActiveProject] = useState<number | null>(null);
 
  const projects = [
   {
@@ -362,14 +362,17 @@ export default function Portfolio() {
                   </div>
                 ) : (
                   <div
-                  //ts-ignore
-                   onClick={() =>
-  setActiveProject(activeProject === project.id ? null : project.id)
-}
-                    className="relative h-full bg-gray-900/40 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:bg-gray-900/60 hover:border-gray-700 hover:scale-[1.02] hover:shadow-2xl overflow-hidden group"
-                    style={{ boxShadow: `0 0 0 ${project.glowColor}` }}
-                    onMouseEnter={(e) => e.currentTarget.style.boxShadow = `0 10px 60px ${project.glowColor}`}
-                    onMouseLeave={(e) => e.currentTarget.style.boxShadow = `0 0 0 ${project.glowColor}`}
+                  
+                    key={project.id}
+  onClick={() => setActiveProject(prev => (prev === project.id ? null : project.id))}
+  className="relative h-full bg-gray-900/40 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:bg-gray-900/60 hover:border-gray-700 hover:scale-[1.02] hover:shadow-2xl overflow-hidden group"
+  style={{ boxShadow: `0 0 0 ${project.glowColor}` }}
+  onMouseEnter={(e) =>
+    (e.currentTarget.style.boxShadow = `0 10px 60px ${project.glowColor}`)
+  }
+  onMouseLeave={(e) =>
+    (e.currentTarget.style.boxShadow = `0 0 0 ${project.glowColor}`)
+  }
                   >
                     <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br ${project.color}`}></div>
                     
