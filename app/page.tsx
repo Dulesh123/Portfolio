@@ -4,71 +4,93 @@ import { Github, Mail, Twitter } from "lucide-react";
 
 import { Pen, Eye, Code, ExternalLink, Sparkles } from "lucide-react";
 
+interface Project {
+  id: number;
+  title: string;
+  role: string;
+  description: string;
+  details: string;
+  features: string[];
+  tags: string[];
+  github: string;
+  color: string;
+  glowColor: string;
+}
+
+interface Blog {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  color: string;
+  glowColor: string;
+}
+
 export default function Portfolio() {
   const [activeProject, setActiveProject] = useState<number | null>(null);
 
- const projects = [
-  {
-    id: 1,
-    title: "Second-Brain",
-    role: "Full-stack Engineer",
-    description: "A Link Management Web-App",
-    details:
-      "Full-stack MERN app to save and manage links and notes. React frontend with Express.js & MongoDB backend.",
-    features: ["Persistent storage", "Smart organization", "Productivity-focused design"],
-    tags: ["React", "Node.js", "MongoDB", "Express"],
-    github: "https://github.com/Dulesh123/Second-Brain",
-    color: "from-blue-500 to-cyan-500",
-    glowColor: "rgba(59, 130, 246, 0.3)"
-  },
-  {
-    id: 2,
-    title: "Live-Sketch",
-    role: "Full-stack Engineer",
-    description: "A Real-time Collaborative Canvas",
-    details:
-      "Real-time collaborative drawing with WebSockets. Session and user data stored in PostgreSQL.",
-    features: ["Real-time collaboration", "Responsive UI", "Productivity-focused design"],
-    tags: ["MERN", "WebSockets", "PostgreSQL", "Turborepo"],
-    github: "https://github.com/Dulesh123/Live-Sketch",
-    color: "from-purple-500 to-pink-500",
-    glowColor: "rgba(168, 85, 247, 0.3)"
-  },
-  {
-    id: 3,
-    title: "Sol-care",
-    role: "Full-stack BlockChain Engineer",
-    description: "A Decentralized Application",
-    details:
-      "Multi-chain wallet with blockchain data fetching using JSON-RPC.",
-    features: ["Solana integration", "Crypto handling", "Balance checking"],
-    tags: ["Next.js", "Web3", "JSON-RPC", "Solana"],
-    github: "https://github.com/Dulesh123/Sol-Care",
-    color: "from-green-500 to-emerald-500",
-    glowColor: "rgba(34, 197, 94, 0.3)"
-  },
-  {
-    id: 4,
-    title: "Diabetic-Retinopathy",
-    role: "IOT and ML Engineer",
-    description: "A Diabetic Stage Detection Application",
-    details:
-      "AI-powered system for early detection using retinal images. IOT device integration with Raspberry Pi.",
-    features: [
-      "Retinal image analysis",
-      "Stage classification",
-      "IOT device control",
-      "Automated detection"
-    ],
-    tags: ["IOT", "ML", "Raspberry Pi", "AI"],
-    github: "https://github.com/Dulesh123/Diabetic-Retinopathy",
-    color: "from-orange-500 to-red-500",
-    glowColor: "rgba(249, 115, 22, 0.3)"
-  }
-];
+  const projects: Project[] = [
+    {
+      id: 1,
+      title: "Second-Brain",
+      role: "Full-stack Engineer",
+      description: "A Link Management Web-App",
+      details:
+        "Full-stack MERN app to save and manage links and notes. React frontend with Express.js & MongoDB backend.",
+      features: ["Persistent storage", "Smart organization", "Productivity-focused design"],
+      tags: ["React", "Node.js", "MongoDB", "Express"],
+      github: "https://github.com/Dulesh123/Second-Brain",
+      color: "from-blue-500 to-cyan-500",
+      glowColor: "rgba(59, 130, 246, 0.3)"
+    },
+    {
+      id: 2,
+      title: "Live-Sketch",
+      role: "Full-stack Engineer",
+      description: "A Real-time Collaborative Canvas",
+      details:
+        "Real-time collaborative drawing with WebSockets. Session and user data stored in PostgreSQL.",
+      features: ["Real-time collaboration", "Responsive UI", "Productivity-focused design"],
+      tags: ["MERN", "WebSockets", "PostgreSQL", "Turborepo"],
+      github: "https://github.com/Dulesh123/Live-Sketch",
+      color: "from-purple-500 to-pink-500",
+      glowColor: "rgba(168, 85, 247, 0.3)"
+    },
+    {
+      id: 3,
+      title: "Sol-care",
+      role: "Full-stack BlockChain Engineer",
+      description: "A Decentralized Application",
+      details:
+        "Multi-chain wallet with blockchain data fetching using JSON-RPC.",
+      features: ["Solana integration", "Crypto handling", "Balance checking"],
+      tags: ["Next.js", "Web3", "JSON-RPC", "Solana"],
+      github: "https://github.com/Dulesh123/Sol-Care",
+      color: "from-green-500 to-emerald-500",
+      glowColor: "rgba(34, 197, 94, 0.3)"
+    },
+    {
+      id: 4,
+      title: "Diabetic-Retinopathy",
+      role: "IOT and ML Engineer",
+      description: "A Diabetic Stage Detection Application",
+      details:
+        "AI-powered system for early detection using retinal images. IOT device integration with Raspberry Pi.",
+      features: [
+        "Retinal image analysis",
+        "Stage classification",
+        "IOT device control",
+        "Automated detection"
+      ],
+      tags: ["IOT", "ML", "Raspberry Pi", "AI"],
+      github: "https://github.com/Dulesh123/Diabetic-Retinopathy",
+      color: "from-orange-500 to-red-500",
+      glowColor: "rgba(249, 115, 22, 0.3)"
+    }
+  ];
 
-
-  const blogs = [
+  const blogs: Blog[] = [
     {
       id: 1,
       title: "Modern Web Development",
@@ -213,69 +235,66 @@ export default function Portfolio() {
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 mb-12">
             {/* Profile Image with enhanced animation */}
             <div className="relative group flex-shrink-0">
-  <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full blur-xl opacity-75 animate-pulse-slow"></div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full blur-xl opacity-75 animate-pulse-slow"></div>
 
-  <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-gray-800 animate-float">
-    <img
-      src="/profile.png"
-      alt="Profile"
-      className="w-full h-full object-cover rounded-full"
-    />
-  </div>
-</div>
-
+              <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-gray-800 animate-float">
+                <img
+                  src="/profile.png"
+                  alt="Profile"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+            </div>
 
             {/* Social Icons with improved layout */}
-           <div className="flex flex-col items-center lg:items-start gap-6 w-full lg:w-auto">
-  <div className="grid grid-cols-4 gap-3 sm:gap-4">
-    {[
-    
-      {
-        Icon: Github,
-        href: "https://github.com/your-username",
-        label: "GitHub",
-        color: "hover:bg-purple-500/20 hover:border-purple-500"
-      },
-      {
-        Icon: Mail,
-        href: "mailto:duleshshivakale@gmail.com",
-        label: "Mail",
-        color: "hover:bg-pink-500/20 hover:border-pink-500"
-      },
-     
-      {
-        Icon: Twitter,
-        href: "https://x.com/your-username",
-        label: "Twitter",
-        color: "hover:bg-cyan-500/20 hover:border-cyan-500"
-      }
-    ].map(({ Icon, href, label, color }) => (
-      <a
-        key={label}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={label}
-        className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl 
-          bg-gray-900/50 backdrop-blur 
-          border border-gray-800 
-          flex items-center justify-center 
-          transition-all duration-300 
-          hover:scale-110 hover:-translate-y-1 
-          group ${color}`}
-      >
-        <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors" />
-      </a>
-    ))}
-  </div>
-</div>
+            <div className="flex flex-col items-center lg:items-start gap-6 w-full lg:w-auto">
+              <div className="grid grid-cols-4 gap-3 sm:gap-4">
+                {[
+                  {
+                    Icon: Github,
+                    href: "https://github.com/your-username",
+                    label: "GitHub",
+                    color: "hover:bg-purple-500/20 hover:border-purple-500"
+                  },
+                  {
+                    Icon: Mail,
+                    href: "mailto:duleshshivakale@gmail.com",
+                    label: "Mail",
+                    color: "hover:bg-pink-500/20 hover:border-pink-500"
+                  },
+                  {
+                    Icon: Twitter,
+                    href: "https://x.com/your-username",
+                    label: "Twitter",
+                    color: "hover:bg-cyan-500/20 hover:border-cyan-500"
+                  }
+                ].map(({ Icon, href, label, color }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl 
+                      bg-gray-900/50 backdrop-blur 
+                      border border-gray-800 
+                      flex items-center justify-center 
+                      transition-all duration-300 
+                      hover:scale-110 hover:-translate-y-1 
+                      group ${color}`}
+                  >
+                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Intro Text with shimmer effect */}
           <div className="space-y-4 sm:space-y-5 text-center lg:text-left">
             <div className="relative inline-block">
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                Hi, I'm Dulesh
+                Hi, I&apos;m Dulesh
               </h1>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
             </div>
@@ -283,7 +302,7 @@ export default function Portfolio() {
               21, Belagavi | Full Stack Engineer
             </p>
             <p className="text-base sm:text-lg text-gray-300 max-w-3xl leading-relaxed mx-auto lg:mx-0">
-              I'm a Full Stack Engineer building robust, scalable, and user-centric web applications. 
+              I&apos;m a Full Stack Engineer building robust, scalable, and user-centric web applications. 
               From designing efficient backend architectures to crafting seamless front-end experiences, 
               I turn complex technical challenges into intuitive digital solutions.
             </p>
@@ -362,17 +381,15 @@ export default function Portfolio() {
                   </div>
                 ) : (
                   <div
-                  
-                    key={project.id}
-  onClick={() => setActiveProject(prev => (prev === project.id ? null : project.id))}
-  className="relative h-full bg-gray-900/40 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:bg-gray-900/60 hover:border-gray-700 hover:scale-[1.02] hover:shadow-2xl overflow-hidden group"
-  style={{ boxShadow: `0 0 0 ${project.glowColor}` }}
-  onMouseEnter={(e) =>
-    (e.currentTarget.style.boxShadow = `0 10px 60px ${project.glowColor}`)
-  }
-  onMouseLeave={(e) =>
-    (e.currentTarget.style.boxShadow = `0 0 0 ${project.glowColor}`)
-  }
+                    onClick={() => setActiveProject(prev => (prev === project.id ? null : project.id))}
+                    className="relative h-full bg-gray-900/40 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:bg-gray-900/60 hover:border-gray-700 hover:scale-[1.02] hover:shadow-2xl overflow-hidden group"
+                    style={{ boxShadow: `0 0 0 ${project.glowColor}` }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.boxShadow = `0 10px 60px ${project.glowColor}`)
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.boxShadow = `0 0 0 ${project.glowColor}`)
+                    }
                   >
                     <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br ${project.color}`}></div>
                     
