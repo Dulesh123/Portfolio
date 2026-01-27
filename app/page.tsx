@@ -252,7 +252,7 @@ export default function Portfolio() {
                 {[
                   {
                     Icon: Github,
-                    href: "https://github.com/your-username",
+                    href: "https://github.com/dulesh123",
                     label: "GitHub",
                     color: "hover:bg-purple-500/20 hover:border-purple-500"
                   },
@@ -264,7 +264,7 @@ export default function Portfolio() {
                   },
                   {
                     Icon: Twitter,
-                    href: "https://x.com/your-username",
+                    href: "https://x.com/DShivakale",
                     label: "Twitter",
                     color: "hover:bg-cyan-500/20 hover:border-cyan-500"
                   }
