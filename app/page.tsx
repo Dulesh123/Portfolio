@@ -1,17 +1,48 @@
 "use client";
 
-import { Github, Mail, Twitter, Pen, Eye, Code, ExternalLink, Sparkles } from "lucide-react";
+import { Github, Mail, Twitter, Pen, Eye, Code, ExternalLink, Sparkles, LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
+// Type definitions
+interface Project {
+  id: number;
+  title: string;
+  role: string;
+  description: string;
+  details: string;
+  features: string[];
+  tags: string[];
+  github: string;
+  color: string;
+  glowColor: string;
+}
+
+interface Blog {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  color: string;
+  glowColor: string;
+}
+
+interface SocialLink {
+  Icon: LucideIcon;
+  href: string;
+  label: string;
+  color: string;
+}
+
 export function useTypewriter(
-  words,
-  typingSpeed = 120,
-  deletingSpeed = 60,
-  delay = 1000
-) {
-  const [text, setText] = useState("");
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  words: string[],
+  typingSpeed: number = 120,
+  deletingSpeed: number = 60,
+  delay: number = 1000
+): string {
+  const [text, setText] = useState<string>("");
+  const [index, setIndex] = useState<number>(0);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
   useEffect(() => {
     const currentWord = words[index];
@@ -42,7 +73,7 @@ export function useTypewriter(
 }
 
 export default function Portfolio() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProject, setActiveProject] = useState<number | null>(null);
   
   const text = useTypewriter([
     "Hi, I'm Dulesh",
@@ -50,7 +81,7 @@ export default function Portfolio() {
     "AI Enthusiast",
   ]);
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "Second-Brain",
@@ -110,7 +141,7 @@ export default function Portfolio() {
     }
   ];
 
-  const blogs = [
+  const blogs: Blog[] = [
     {
       id: 1,
       title: "Modern Web Development",
@@ -137,6 +168,27 @@ export default function Portfolio() {
       tags: ["Docker", "Containers", "Docker Compose", "Orchestration"],
       color: "from-cyan-500 to-blue-500",
       glowColor: "rgba(6, 182, 212, 0.3)"
+    }
+  ];
+
+  const socialLinks: SocialLink[] = [
+    {
+      Icon: Github,
+      href: "https://github.com/dulesh123",
+      label: "GitHub",
+      color: "hover:bg-purple-500/20 hover:border-purple-500"
+    },
+    {
+      Icon: Mail,
+      href: "mailto:duleshshivakale@gmail.com",
+      label: "Mail",
+      color: "hover:bg-pink-500/20 hover:border-pink-500"
+    },
+    {
+      Icon: Twitter,
+      href: "https://x.com/DShivakale",
+      label: "Twitter",
+      color: "hover:bg-cyan-500/20 hover:border-cyan-500"
     }
   ];
 
@@ -995,26 +1047,7 @@ export default function Portfolio() {
             {/* Social Icons with improved layout */}
             <div className="flex flex-col items-center lg:items-start gap-6 w-full lg:w-auto">
               <div className="grid grid-cols-3 gap-3 sm:gap-5 items-center w-fit mx-auto">
-                {[
-                  {
-                    Icon: Github,
-                    href: "https://github.com/dulesh123",
-                    label: "GitHub",
-                    color: "hover:bg-purple-500/20 hover:border-purple-500"
-                  },
-                  {
-                    Icon: Mail,
-                    href: "mailto:duleshshivakale@gmail.com",
-                    label: "Mail",
-                    color: "hover:bg-pink-500/20 hover:border-pink-500"
-                  },
-                  {
-                    Icon: Twitter,
-                    href: "https://x.com/DShivakale",
-                    label: "Twitter",
-                    color: "hover:bg-cyan-500/20 hover:border-cyan-500"
-                  }
-                ].map(({ Icon, href, label, color }) => (
+                {socialLinks.map(({ Icon, href, label, color }) => (
                   <a
                     key={label}
                     href={href}
