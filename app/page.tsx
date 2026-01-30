@@ -1079,7 +1079,7 @@ export default function Portfolio() {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
             </div>
             <p className="text-xl sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold">
-              21, Belagavi | Full Stack Engineer
+              22, Belagavi | Full Stack Engineer
             </p>
             <p className="text-base sm:text-lg text-gray-300 max-w-3xl leading-relaxed mx-auto lg:mx-0">
               I&apos;m a Full Stack Engineer building robust, scalable, and user-centric web applications. 
