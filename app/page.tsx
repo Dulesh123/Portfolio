@@ -111,7 +111,7 @@ export default function Portfolio() {
     {
       id: 3,
       title: "Sol-care",
-      role: "Full-stack BlockChain Engineer",
+      role: "Full-stack Engineer",
       description: "A Decentralized Application",
       details:
         "Multi-chain wallet with blockchain data fetching using JSON-RPC.",
