@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Mail, Twitter, Pen, Eye, Code, ExternalLink, Sparkles, LucideIcon } from "lucide-react";
+import { Github, Mail, Twitter, Eye, ExternalLink, Sparkles, LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 // Type definitions
@@ -34,6 +34,13 @@ interface SocialLink {
   color: string;
 }
 
+interface Skill {
+  name: string;
+  category: string;
+  gradient: string;
+}
+
+// Custom hook for typewriter effect
 export function useTypewriter(
   words: string[],
   typingSpeed: number = 120,
@@ -54,12 +61,10 @@ export function useTypewriter(
           : currentWord.substring(0, prev.length + 1)
       );
 
-      // Pause before deleting
       if (!isDeleting && text === currentWord) {
         setTimeout(() => setIsDeleting(true), delay);
       }
 
-      // Move to next word
       if (isDeleting && text === "") {
         setIsDeleting(false);
         setIndex((prev) => (prev + 1) % words.length);
@@ -87,8 +92,7 @@ export default function Portfolio() {
       title: "Second-Brain",
       role: "Full-stack Engineer",
       description: "A Link Management Web-App",
-      details:
-        "Full-stack MERN app to save and manage links and notes. React frontend with Express.js & MongoDB backend.",
+      details: "Full-stack MERN app to save and manage links and notes. React frontend with Express.js & MongoDB backend.",
       features: ["Persistent storage", "Smart organization", "Productivity-focused design"],
       tags: ["React", "Node.js", "MongoDB", "Express"],
       github: "https://github.com/Dulesh123/Second-Brain",
@@ -100,8 +104,7 @@ export default function Portfolio() {
       title: "Live-Sketch",
       role: "Full-stack Engineer",
       description: "A Real-time Collaborative Canvas",
-      details:
-        "Real-time collaborative drawing with WebSockets. Session and user data stored in PostgreSQL.",
+      details: "Real-time collaborative drawing with WebSockets. Session and user data stored in PostgreSQL.",
       features: ["Real-time collaboration", "Responsive UI", "Productivity-focused design"],
       tags: ["MERN", "WebSockets", "PostgreSQL", "Turborepo"],
       github: "https://github.com/Dulesh123/Live-Sketch",
@@ -113,8 +116,7 @@ export default function Portfolio() {
       title: "Sol-care",
       role: "Full-stack BlockChain Engineer",
       description: "A Decentralized Application",
-      details:
-        "Multi-chain wallet with blockchain data fetching using JSON-RPC.",
+      details: "Multi-chain wallet with blockchain data fetching using JSON-RPC.",
       features: ["Solana integration", "Crypto handling", "Balance checking"],
       tags: ["Next.js", "Web3", "JSON-RPC", "Solana"],
       github: "https://github.com/Dulesh123/Sol-Care",
@@ -126,8 +128,7 @@ export default function Portfolio() {
       title: "Diabetic-Retinopathy",
       role: "IOT and ML Engineer",
       description: "A Diabetic Stage Detection Application",
-      details:
-        "AI-powered system for early detection using retinal images. IOT device integration with Raspberry Pi.",
+      details: "AI-powered system for early detection using retinal images. IOT device integration with Raspberry Pi.",
       features: [
         "Retinal image analysis",
         "Stage classification",
@@ -192,6 +193,26 @@ export default function Portfolio() {
     }
   ];
 
+  const skillsRow1: Skill[] = [
+    { name: "Java", category: "Language", gradient: "from-orange-500 to-red-600" },
+    { name: "JavaScript", category: "Language", gradient: "from-yellow-400 to-orange-500" },
+    { name: "TypeScript", category: "Language", gradient: "from-blue-500 to-cyan-600" },
+    { name: "Python", category: "Language", gradient: "from-blue-600 to-yellow-500" },
+    { name: "React.js", category: "Frontend", gradient: "from-cyan-400 to-blue-600" },
+    { name: "Express", category: "Backend", gradient: "from-gray-600 to-gray-800" },
+    { name: "Tailwind CSS", category: "Styling", gradient: "from-cyan-500 to-blue-500" },
+  ];
+
+  const skillsRow2: Skill[] = [
+    { name: "MySQL", category: "Database", gradient: "from-blue-600 to-blue-800" },
+    { name: "MongoDB", category: "Database", gradient: "from-green-500 to-emerald-700" },
+    { name: "Docker", category: "DevOps", gradient: "from-blue-500 to-cyan-600" },
+    { name: "AWS", category: "Cloud", gradient: "from-orange-500 to-yellow-600" },
+    { name: "Git & GitHub", category: "Version Control", gradient: "from-purple-600 to-pink-600" },
+    { name: "NumPy", category: "AI/ML", gradient: "from-blue-400 to-indigo-600" },
+    { name: "Pandas", category: "AI/ML", gradient: "from-purple-500 to-blue-600" },
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
       {/* Google Font Import */}
@@ -212,478 +233,81 @@ export default function Portfolio() {
 
         /* Floating Animations */
         @keyframes float {
-          0%, 100% { 
-            transform: translateY(0px) rotate(0deg); 
-          }
-          33% { 
-            transform: translateY(-20px) rotate(5deg); 
-          }
-          66% { 
-            transform: translateY(-10px) rotate(-5deg); 
-          }
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33% { transform: translateY(-20px) rotate(5deg); }
+          66% { transform: translateY(-10px) rotate(-5deg); }
         }
         
         @keyframes floatSlow {
-          0%, 100% { 
-            transform: translate(0, 0) scale(1); 
-          }
-          50% { 
-            transform: translate(50px, -50px) scale(1.05); 
-          }
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(50px, -50px) scale(1.05); }
         }
 
-        @keyframes floatVertical {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-30px);
-          }
-        }
-
-        @keyframes floatHorizontal {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          50% {
-            transform: translateX(30px);
-          }
-        }
-        
         /* Pulse & Glow Animations */
         @keyframes pulse {
-          0%, 100% { 
-            opacity: 0.4; 
-            transform: scale(1); 
-          }
-          50% { 
-            opacity: 0.7; 
-            transform: scale(1.15); 
-          }
-        }
-
-        @keyframes pulseRing {
-          0% {
-            transform: scale(0.9);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1.5);
-            opacity: 0;
-          }
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50% { opacity: 0.7; transform: scale(1.15); }
         }
 
         @keyframes glow {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-          }
-          50% {
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
-          }
-        }
-
-        @keyframes glowRainbow {
-          0% {
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-          }
-          33% {
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-          }
-          66% {
-            box-shadow: 0 0 30px rgba(0, 0, 255, 0.5);
-          }
-          100% {
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-          }
+          0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+          50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.8); }
         }
         
         /* Shimmer & Shine Effects */
         @keyframes shimmer {
-          0% { 
-            background-position: -1000px 0; 
-          }
-          100% { 
-            background-position: 1000px 0; 
-          }
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
         }
 
         @keyframes shine {
-          0% {
-            background-position: -200% center;
-          }
-          100% {
-            background-position: 200% center;
-          }
-        }
-
-        @keyframes sparkle {
-          0%, 100% {
-            opacity: 0;
-            transform: scale(0);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1);
-          }
+          0% { background-position: -200% center; }
+          100% { background-position: 200% center; }
         }
         
-        /* Grid & Flow Animations */
+        /* Grid Flow Animation */
         @keyframes gridFlow {
-          0% { 
-            transform: translateY(0); 
-            opacity: 1;
-          }
-          100% { 
-            transform: translateY(60px); 
-            opacity: 0.5;
-          }
+          0% { transform: translateY(0); opacity: 1; }
+          100% { transform: translateY(60px); opacity: 0.5; }
         }
 
-        @keyframes waveFlow {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
+        /* Skills Scroll Animations */
+        @keyframes scrollLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        @keyframes scrollRight {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
         }
 
         /* Orbit Animations */
         @keyframes orbitSlow {
-          0% { 
-            transform: rotate(0deg) translateX(100px) rotate(0deg); 
-          }
-          100% { 
-            transform: rotate(360deg) translateX(100px) rotate(-360deg); 
-          }
+          0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+          100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
         }
 
         @keyframes orbitFast {
-          0% { 
-            transform: rotate(0deg) translateX(150px) rotate(0deg); 
-          }
-          100% { 
-            transform: rotate(-360deg) translateX(150px) rotate(360deg); 
-          }
-        }
-
-        @keyframes orbitReverse {
-          0% { 
-            transform: rotate(360deg) translateX(120px) rotate(-360deg); 
-          }
-          100% { 
-            transform: rotate(0deg) translateX(120px) rotate(0deg); 
-          }
-        }
-
-        /* Spin & Rotate Animations */
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes spinSlow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes wiggle {
-          0%, 100% {
-            transform: rotate(0deg);
-          }
-          25% {
-            transform: rotate(-10deg);
-          }
-          75% {
-            transform: rotate(10deg);
-          }
-        }
-
-        @keyframes swing {
-          0%, 100% {
-            transform: rotate(0deg);
-            transform-origin: top center;
-          }
-          25% {
-            transform: rotate(15deg);
-          }
-          75% {
-            transform: rotate(-15deg);
-          }
+          0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+          100% { transform: rotate(-360deg) translateX(150px) rotate(360deg); }
         }
 
         /* Fade Animations */
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeInDown {
-          from {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes fadeInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        /* Scale Animations */
-        @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.5);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes scaleUp {
-          from {
-            transform: scale(1);
-          }
-          to {
-            transform: scale(1.2);
-          }
-        }
-
-        @keyframes bounce {
-          0%, 100% {
-            transform: translateY(0);
-            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-          }
-          50% {
-            transform: translateY(-25%);
-            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-          }
-        }
-
-        @keyframes bounceIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.05);
-          }
-          70% {
-            transform: scale(0.9);
-          }
-          100% {
-            transform: scale(1);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         /* Gradient Animations */
         @keyframes gradientShift {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        @keyframes gradientRotate {
-          0% {
-            background-position: 0% 0%;
-          }
-          25% {
-            background-position: 100% 0%;
-          }
-          50% {
-            background-position: 100% 100%;
-          }
-          75% {
-            background-position: 0% 100%;
-          }
-          100% {
-            background-position: 0% 0%;
-          }
-        }
-
-        @keyframes rainbowGlow {
-          0% {
-            filter: hue-rotate(0deg);
-          }
-          100% {
-            filter: hue-rotate(360deg);
-          }
-        }
-
-        /* Shake & Vibrate */
-        @keyframes shake {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          10%, 30%, 50%, 70%, 90% {
-            transform: translateX(-10px);
-          }
-          20%, 40%, 60%, 80% {
-            transform: translateX(10px);
-          }
-        }
-
-        @keyframes vibrate {
-          0%, 100% {
-            transform: translate(0, 0);
-          }
-          25% {
-            transform: translate(-2px, 2px);
-          }
-          50% {
-            transform: translate(2px, -2px);
-          }
-          75% {
-            transform: translate(-2px, -2px);
-          }
-        }
-
-        /* Flip Animations */
-        @keyframes flip {
-          0% {
-            transform: perspective(400px) rotateY(0);
-          }
-          100% {
-            transform: perspective(400px) rotateY(360deg);
-          }
-        }
-
-        @keyframes flipX {
-          0% {
-            transform: perspective(400px) rotateX(0);
-          }
-          100% {
-            transform: perspective(400px) rotateX(360deg);
-          }
-        }
-
-        /* Slide Animations */
-        @keyframes slideInLeft {
-          from {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes slideInRight {
-          from {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes slideUp {
-          from {
-            transform: translateY(100%);
-          }
-          to {
-            transform: translateY(0);
-          }
-        }
-
-        /* Blur & Focus */
-        @keyframes blurIn {
-          from {
-            filter: blur(10px);
-            opacity: 0;
-          }
-          to {
-            filter: blur(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes focusPulse {
-          0%, 100% {
-            filter: blur(0px);
-          }
-          50% {
-            filter: blur(2px);
-          }
-        }
-
-        /* Typewriter Effect */
-        @keyframes typewriter {
-          from {
-            width: 0;
-          }
-          to {
-            width: 100%;
-          }
-        }
-
-        @keyframes blink {
-          50% {
-            opacity: 0;
-          }
-        }
-
-        /* Morphing */
-        @keyframes morph {
-          0%, 100% {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-          }
-          50% {
-            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-          }
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
         }
 
         /* Utility Classes */
@@ -696,49 +320,17 @@ export default function Portfolio() {
           animation: floatSlow 15s ease-in-out infinite;
           will-change: transform;
         }
-
-        .animate-float-vertical {
-          animation: floatVertical 6s ease-in-out infinite;
-        }
-
-        .animate-float-horizontal {
-          animation: floatHorizontal 8s ease-in-out infinite;
-        }
         
         .animate-pulse-slow {
           animation: pulse 4s ease-in-out infinite;
           will-change: opacity, transform;
         }
-
-        .animate-pulse-ring {
-          animation: pulseRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
         
         .animate-shimmer {
-          background: linear-gradient(
-            90deg, 
-            transparent, 
-            rgba(255, 255, 255, 0.15), 
-            transparent
-          );
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
           background-size: 1000px 100%;
           animation: shimmer 3s infinite;
           will-change: background-position;
-        }
-
-        .animate-shine {
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.3) 50%,
-            transparent 100%
-          );
-          background-size: 200% 100%;
-          animation: shine 3s infinite;
-        }
-
-        .animate-sparkle {
-          animation: sparkle 2s ease-in-out infinite;
         }
         
         .animate-grid-flow {
@@ -746,8 +338,17 @@ export default function Portfolio() {
           will-change: transform, opacity;
         }
 
-        .animate-wave {
-          animation: waveFlow 3s ease-in-out infinite;
+        .animate-scroll-left {
+          animation: scrollLeft 30s linear infinite;
+        }
+
+        .animate-scroll-right {
+          animation: scrollRight 35s linear infinite;
+        }
+
+        .animate-scroll-left:hover,
+        .animate-scroll-right:hover {
+          animation-play-state: paused;
         }
 
         .animate-orbit-slow {
@@ -760,26 +361,6 @@ export default function Portfolio() {
           will-change: transform;
         }
 
-        .animate-orbit-reverse {
-          animation: orbitReverse 25s linear infinite;
-        }
-
-        .animate-spin {
-          animation: spin 1s linear infinite;
-        }
-
-        .animate-spin-slow {
-          animation: spinSlow 3s linear infinite;
-        }
-
-        .animate-wiggle {
-          animation: wiggle 1s ease-in-out infinite;
-        }
-
-        .animate-swing {
-          animation: swing 2s ease-in-out infinite;
-        }
-
         .animate-fade-in {
           animation: fadeIn 0.5s ease-out forwards;
         }
@@ -788,104 +369,13 @@ export default function Portfolio() {
           animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        .animate-fade-in-down {
-          animation: fadeInDown 0.6s ease-out forwards;
-        }
-
-        .animate-fade-in-left {
-          animation: fadeInLeft 0.6s ease-out forwards;
-        }
-
-        .animate-fade-in-right {
-          animation: fadeInRight 0.6s ease-out forwards;
-        }
-
-        .animate-scale-in {
-          animation: scaleIn 0.5s ease-out forwards;
-        }
-
-        .animate-scale-up {
-          animation: scaleUp 0.3s ease-out forwards;
-        }
-
-        .animate-bounce {
-          animation: bounce 1s infinite;
-        }
-
-        .animate-bounce-in {
-          animation: bounceIn 0.8s ease-out forwards;
-        }
-
         .animate-glow {
           animation: glow 3s ease-in-out infinite;
-        }
-
-        .animate-glow-rainbow {
-          animation: glowRainbow 5s ease-in-out infinite;
         }
 
         .animate-gradient {
           background-size: 200% 200%;
           animation: gradientShift 8s ease infinite;
-        }
-
-        .animate-gradient-rotate {
-          background-size: 400% 400%;
-          animation: gradientRotate 15s ease infinite;
-        }
-
-        .animate-rainbow {
-          animation: rainbowGlow 3s linear infinite;
-        }
-
-        .animate-shake {
-          animation: shake 0.5s ease-in-out;
-        }
-
-        .animate-vibrate {
-          animation: vibrate 0.3s ease-in-out infinite;
-        }
-
-        .animate-flip {
-          animation: flip 2s ease-in-out infinite;
-        }
-
-        .animate-flip-x {
-          animation: flipX 2s ease-in-out infinite;
-        }
-
-        .animate-slide-in-left {
-          animation: slideInLeft 0.6s ease-out forwards;
-        }
-
-        .animate-slide-in-right {
-          animation: slideInRight 0.6s ease-out forwards;
-        }
-
-        .animate-slide-up {
-          animation: slideUp 0.6s ease-out forwards;
-        }
-
-        .animate-blur-in {
-          animation: blurIn 1s ease-out forwards;
-        }
-
-        .animate-focus-pulse {
-          animation: focusPulse 3s ease-in-out infinite;
-        }
-
-        .animate-typewriter {
-          overflow: hidden;
-          white-space: nowrap;
-          animation: typewriter 3s steps(40) forwards;
-        }
-
-        .animate-blink {
-          animation: blink 1s step-end infinite;
-        }
-
-        .animate-morph {
-          animation: morph 8s ease-in-out infinite;
         }
 
         /* Hover Effects */
@@ -906,14 +396,6 @@ export default function Portfolio() {
           transform: scale(1.05);
         }
 
-        .hover-scale-lg {
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hover-scale-lg:hover {
-          transform: scale(1.1);
-        }
-
         .hover-glow {
           transition: box-shadow 0.3s ease, filter 0.3s ease;
         }
@@ -923,58 +405,10 @@ export default function Portfolio() {
           filter: brightness(1.1);
         }
 
-        .hover-rotate {
-          transition: transform 0.3s ease;
-        }
-
-        .hover-rotate:hover {
-          transform: rotate(5deg);
-        }
-
-        .hover-float {
-          transition: transform 0.3s ease;
-        }
-
-        .hover-float:hover {
-          transform: translateY(-5px);
-        }
-
-        .hover-tilt {
-          transition: transform 0.3s ease;
-        }
-
-        .hover-tilt:hover {
-          transform: perspective(1000px) rotateX(10deg);
-        }
-
-        .hover-shimmer:hover {
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-          background-size: 200% 100%;
-          animation: shimmer 1.5s ease-in-out;
-        }
-
         /* Smooth transitions */
         .transition-smooth {
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .transition-spring {
-          transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .transition-bounce {
-          transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        /* Delay classes */
-        .delay-75 { animation-delay: 75ms; }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-150 { animation-delay: 150ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        .delay-500 { animation-delay: 500ms; }
-        .delay-700 { animation-delay: 700ms; }
-        .delay-1000 { animation-delay: 1000ms; }
 
         /* Performance optimizations */
         @media (prefers-reduced-motion: reduce) {
@@ -992,6 +426,27 @@ export default function Portfolio() {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
           text-rendering: optimizeLegibility;
+        }
+
+        /* Responsive orbit animations for mobile */
+        @media (max-width: 768px) {
+          @keyframes orbitSlowMobile {
+            0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+          }
+
+          @keyframes orbitFastMobile {
+            0% { transform: rotate(0deg) translateX(75px) rotate(0deg); }
+            100% { transform: rotate(-360deg) translateX(75px) rotate(360deg); }
+          }
+
+          .animate-orbit-slow {
+            animation: orbitSlowMobile 30s linear infinite;
+          }
+
+          .animate-orbit-fast {
+            animation: orbitFastMobile 20s linear infinite;
+          }
         }
       `}</style>
 
@@ -1012,10 +467,10 @@ export default function Portfolio() {
           }}
         ></div>
         
-        {/* Floating orbs with orbit animation */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/15 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '4s' }}></div>
+        {/* Floating orbs with pulse animation */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-56 h-56 md:w-80 md:h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-48 h-48 md:w-64 md:h-64 bg-cyan-500/15 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '4s' }}></div>
         
         {/* Small floating particles */}
         <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400 rounded-full animate-orbit-slow"></div>
@@ -1027,15 +482,14 @@ export default function Portfolio() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         {/* Hero Section */}
-        <div className="mb-20 sm:mb-24 lg:mb-32">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 mb-12">
+        <section className="mb-16 sm:mb-20 lg:mb-28">
+          <div className="flex flex-col items-center gap-8 lg:gap-12 mb-10 lg:mb-12">
             {/* Profile Image with enhanced animation */}
             <div className="relative group flex-shrink-0">
               <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-full blur-xl opacity-75 animate-pulse-slow"></div>
-
-              <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-gray-800 animate-float">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-gray-800 animate-float">
                 <img
                   src="/profile.png"
                   alt="Profile"
@@ -1044,68 +498,58 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* Social Icons with improved layout */}
-            <div className="flex flex-col items-center lg:items-start gap-6 w-full lg:w-auto">
-              <div className="grid grid-cols-3 gap-3 sm:gap-5 items-center w-fit mx-auto">
-                {socialLinks.map(({ Icon, href, label, color }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl 
-                      bg-gray-900/50 backdrop-blur 
-                      border border-gray-800 
-                      flex items-center justify-center 
-                      transition-all duration-300 
-                      hover:scale-110 hover:-translate-y-1 
-                      group ${color}`}
-                  >
-                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors" />
-                  </a>
-                ))}
-              </div>
+            {/* Social Icons */}
+            <div className="flex gap-3 sm:gap-4 items-center justify-center">
+              {socialLinks.map(({ Icon, href, label, color }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl 
+                    bg-gray-900/50 backdrop-blur 
+                    border border-gray-800 
+                    flex items-center justify-center 
+                    transition-all duration-300 
+                    hover:scale-110 hover:-translate-y-1 
+                    group ${color}`}
+                >
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-gray-400 group-hover:text-white transition-colors" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Intro Text with shimmer effect */}
-          <div className="space-y-4 sm:space-y-5 text-center lg:text-left">
+          {/* Intro Text */}
+          <div className="space-y-3 sm:space-y-4 text-center">
             <div className="relative inline-block">
-              <h1 className="text-5xl sm:text-5xl md:text-5xl lg:text-5xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent px-4">
                 {text}
                 <span className="animate-pulse">|</span>
               </h1>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
             </div>
-            <p className="text-xl sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold">
+            <p className="text-lg sm:text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold px-4">
               22, Belagavi | Full Stack Engineer
             </p>
-            <p className="text-base sm:text-lg text-gray-300 max-w-3xl leading-relaxed mx-auto lg:mx-0">
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl leading-relaxed mx-auto px-4">
               I&apos;m a Full Stack Engineer building robust, scalable, and user-centric web applications. 
               From designing efficient backend architectures to crafting seamless front-end experiences, 
               I turn complex technical challenges into intuitive digital solutions.
             </p>
           </div>
-        </div>
+        </section>
 
         {/* Projects Section */}
-        <section className="mb-20 sm:mb-24 lg:mb-32">
-          <div className="mb-12 text-center lg:text-left">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                <Code className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">
-                Projects
-              </h2>
-            </div>
-            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0">
-              A collection of projects highlighting my expertise in full-stack and blockchain development
-            </p>
+        <section className="mb-16 sm:mb-20 lg:mb-28">
+          <div className="mb-8 sm:mb-10 lg:mb-12 text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent px-4 lg:px-0">
+              Projects
+            </h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-5 lg:space-y-6">
             {projects.map((project, index) => (
               <div
                 key={project.id}
@@ -1113,33 +557,34 @@ export default function Portfolio() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {activeProject === project.id ? (
-                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-900/80 backdrop-blur-2xl border border-gray-800 rounded-3xl p-6 sm:p-8 lg:p-10 overflow-hidden">
+                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-900/80 backdrop-blur-2xl border border-gray-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-10 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
                     <div className={`absolute inset-0 opacity-20 blur-3xl bg-gradient-to-r ${project.color}`}></div>
                     
                     <button
                       onClick={() => setActiveProject(null)}
-                      className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-gray-800/80 hover:bg-gray-700 backdrop-blur flex items-center justify-center transition-all hover:scale-110 z-10"
+                      className="absolute top-3 right-3 sm:top-4 sm:right-4 lg:top-6 lg:right-6 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-800/80 hover:bg-gray-700 backdrop-blur flex items-center justify-center transition-all hover:scale-110 z-10"
+                      aria-label="Close project details"
                     >
-                      <span className="text-2xl text-gray-300">✕</span>
+                      <span className="text-xl sm:text-2xl text-gray-300">✕</span>
                     </button>
                     
                     <div className="relative z-10">
-                      <div className={`h-1.5 w-24 bg-gradient-to-r ${project.color} rounded-full mb-6`}></div>
+                      <div className={`h-1 sm:h-1.5 w-16 sm:w-24 bg-gradient-to-r ${project.color} rounded-full mb-4 sm:mb-6`}></div>
                       
-                      <h3 className="text-3xl sm:text-4xl font-bold mb-3">{project.title}</h3>
-                      <p className="text-base sm:text-lg text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-6">{project.role}</p>
-                      <p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">{project.details}</p>
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3">{project.title}</h3>
+                      <p className="text-sm sm:text-base lg:text-lg text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4 sm:mb-6">{project.role}</p>
+                      <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">{project.details}</p>
                       
-                      <div className="mb-8">
-                        <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                          <Sparkles className="w-5 h-5 text-blue-400" />
+                      <div className="mb-6 sm:mb-8">
+                        <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center gap-2">
+                          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                           Features
                         </h4>
-                        <ul className="space-y-3">
+                        <ul className="space-y-2 sm:space-y-3">
                           {project.features.map((feature, i) => (
-                            <li key={i} className="flex items-start gap-3 text-base sm:text-lg text-gray-300">
-                              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${project.color} flex-shrink-0 mt-2`}></div>
+                            <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base lg:text-lg text-gray-300">
+                              <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r ${project.color} flex-shrink-0 mt-1.5 sm:mt-2`}></div>
                               <span>{feature}</span>
                             </li>
                           ))}
@@ -1150,19 +595,19 @@ export default function Portfolio() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-gradient-to-r ${project.color} rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105`}
+                        className={`inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 text-sm sm:text-base lg:text-lg font-semibold bg-gradient-to-r ${project.color} rounded-xl sm:rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105`}
                         style={{ boxShadow: `0 10px 40px ${project.glowColor}` }}
                       >
-                        <Github className="w-5 h-5 sm:w-6 sm:h-6" />
+                        <Github className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
                         View on GitHub
-                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                       </a>
                     </div>
                   </div>
                 ) : (
                   <div
                     onClick={() => setActiveProject(project.id)}
-                    className="relative h-full bg-gray-900/40 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 cursor-pointer transition-all duration-300 hover:bg-gray-900/60 hover:border-gray-700 hover:scale-[1.02] hover:shadow-2xl overflow-hidden group"
+                    className="relative h-full bg-gray-900/40 backdrop-blur border border-gray-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 cursor-pointer transition-all duration-300 hover:bg-gray-900/60 hover:border-gray-700 hover:scale-[1.01] sm:hover:scale-[1.02] hover:shadow-2xl overflow-hidden group"
                     style={{ boxShadow: `0 0 0 ${project.glowColor}` }}
                     onMouseEnter={(e) =>
                       (e.currentTarget.style.boxShadow = `0 10px 60px ${project.glowColor}`)
@@ -1174,23 +619,23 @@ export default function Portfolio() {
                     <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br ${project.color}`}></div>
                     
                     <div className="relative z-10">
-                      <div className={`h-1.5 w-20 bg-gradient-to-r ${project.color} rounded-full mb-5`}></div>
+                      <div className={`h-1 sm:h-1.5 w-14 sm:w-20 bg-gradient-to-r ${project.color} rounded-full mb-3 sm:mb-5`}></div>
                       
-                      <div className="flex items-start justify-between mb-5 gap-4">
+                      <div className="flex items-start justify-between mb-3 sm:mb-5 gap-3 sm:gap-4">
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-2xl sm:text-3xl font-bold mb-2">{project.title}</h3>
-                          <p className="text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">{project.role}</p>
+                          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1.5 sm:mb-2">{project.title}</h3>
+                          <p className="text-xs sm:text-sm lg:text-base text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">{project.role}</p>
                         </div>
-                        <Eye className="w-6 h-6 text-gray-600 group-hover:text-blue-400 transition-colors flex-shrink-0 mt-1" />
+                        <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 group-hover:text-blue-400 transition-colors flex-shrink-0 mt-0.5 sm:mt-1" />
                       </div>
 
-                      <p className="text-base sm:text-lg text-gray-400 mb-5">{project.description}</p>
+                      <p className="text-sm sm:text-base lg:text-lg text-gray-400 mb-3 sm:mb-5">{project.description}</p>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full bg-gray-800/50 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors whitespace-nowrap"
+                            className="px-2.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 text-xs sm:text-sm rounded-full bg-gray-800/50 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors whitespace-nowrap"
                           >
                             {tag}
                           </span>
@@ -1204,27 +649,52 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Blogs Section */}
-        <section>
-          <div className="mb-12 text-center lg:text-left">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                <Pen className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent">
-                Blogs
-              </h2>
-            </div>
-            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0">
-              Insights and learnings from my development journey
-            </p>
+        {/* Skills Section */}
+        <section className="mb-16 sm:mb-20 lg:mb-28">
+          <div className="mb-10 sm:mb-12 lg:mb-16 text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent px-4 lg:px-0">
+              Skills & Technologies
+            </h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="relative overflow-hidden py-3 sm:py-4">
+            {/* Gradient fade on edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+
+            {/* First row - scrolling left */}
+            <div className="flex gap-3 sm:gap-4 lg:gap-5 mb-5 sm:mb-6 lg:mb-8 animate-scroll-left">
+              <div className="flex gap-3 sm:gap-4 lg:gap-5">
+                {[...skillsRow1, ...skillsRow1].map((skill, index) => (
+                  <SkillCard key={`${skill.name}-${index}`} skill={skill} />
+                ))}
+              </div>
+            </div>
+
+            {/* Second row - scrolling right */}
+            <div className="flex gap-3 sm:gap-4 lg:gap-5 animate-scroll-right">
+              <div className="flex gap-3 sm:gap-4 lg:gap-5">
+                {[...skillsRow2, ...skillsRow2].map((skill, index) => (
+                  <SkillCard key={`${skill.name}-${index}`} skill={skill} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Blogs Section */}
+        <section>
+          <div className="mb-8 sm:mb-10 lg:mb-12 text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-purple-300 bg-clip-text text-transparent px-4 lg:px-0">
+              Blogs
+            </h2>
+          </div>
+
+          <div className="space-y-4 sm:space-y-5 lg:space-y-6">
             {blogs.map((blog, index) => (
               <div
                 key={blog.id}
-                className="relative bg-gray-900/40 backdrop-blur border border-gray-800 rounded-3xl p-6 sm:p-8 hover:bg-gray-900/60 hover:border-gray-700 transition-all duration-300 hover:scale-[1.02] cursor-pointer group overflow-hidden"
+                className="relative bg-gray-900/40 backdrop-blur border border-gray-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 hover:bg-gray-900/60 hover:border-gray-700 transition-all duration-300 hover:scale-[1.01] sm:hover:scale-[1.02] cursor-pointer group overflow-hidden"
                 style={{ 
                   animationDelay: `${index * 0.1}s`,
                   boxShadow: `0 0 0 ${blog.glowColor}`
@@ -1235,19 +705,19 @@ export default function Portfolio() {
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br ${blog.color}`}></div>
                 
                 <div className="relative z-10">
-                  <div className={`h-1.5 w-20 bg-gradient-to-r ${blog.color} rounded-full mb-5`}></div>
+                  <div className={`h-1 sm:h-1.5 w-14 sm:w-20 bg-gradient-to-r ${blog.color} rounded-full mb-3 sm:mb-5`}></div>
                   
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1.5 sm:mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
                     {blog.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-5">{blog.category}</p>
-                  <p className="text-base sm:text-lg text-gray-400 mb-5 leading-relaxed">{blog.description}</p>
+                  <p className="text-xs sm:text-sm lg:text-base text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-3 sm:mb-5">{blog.category}</p>
+                  <p className="text-sm sm:text-base lg:text-lg text-gray-400 mb-3 sm:mb-5 leading-relaxed">{blog.description}</p>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {blog.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full bg-gray-800/50 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors whitespace-nowrap"
+                        className="px-2.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 text-xs sm:text-sm rounded-full bg-gray-800/50 text-gray-300 border border-gray-700 hover:border-gray-600 transition-colors whitespace-nowrap"
                       >
                         {tag}
                       </span>
@@ -1258,6 +728,40 @@ export default function Portfolio() {
             ))}
           </div>
         </section>
+      </div>
+    </div>
+  );
+}
+
+// Skill Card Component for reusability
+function SkillCard({ skill }: { skill: Skill }) {
+  return (
+    <div className="relative group flex-shrink-0">
+      {/* Glow effect background */}
+      <div className={`absolute -inset-0.5 bg-gradient-to-r ${skill.gradient} rounded-xl sm:rounded-2xl blur opacity-0 group-hover:opacity-75 transition-all duration-500`}></div>
+      
+      <div className="relative px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 bg-gray-900/80 backdrop-blur-xl border border-gray-800 rounded-xl sm:rounded-2xl transition-all duration-300 hover:bg-gray-900/90 hover:border-gray-700 hover:scale-105 hover:shadow-2xl cursor-pointer overflow-hidden min-w-[140px] sm:min-w-[160px] lg:min-w-[180px]">
+        {/* Animated gradient bar on top */}
+        <div className={`absolute top-0 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r ${skill.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+        
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-center">
+          <p className="text-sm sm:text-base lg:text-lg font-bold text-gray-100 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-200 transition-all mb-1 sm:mb-1.5">
+            {skill.name}
+          </p>
+          <div className={`h-0.5 w-0 mx-auto bg-gradient-to-r ${skill.gradient} transition-all duration-300 group-hover:w-full mb-1.5 sm:mb-2`}></div>
+          <p className="text-[10px] sm:text-xs text-gray-500 group-hover:text-gray-400 transition-colors font-medium uppercase tracking-wider">
+            {skill.category}
+          </p>
+        </div>
+
+        {/* Corner accent */}
+        <div className={`absolute bottom-0 right-0 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-tl ${skill.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-tl-xl sm:rounded-tl-2xl`}></div>
       </div>
     </div>
   );
